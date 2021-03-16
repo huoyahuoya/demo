@@ -1,12 +1,11 @@
 package com.example.demo.readinglist;
 
+import com.example.demo.aspect.LogCollection;
+import com.example.demo.aspect.WzcgLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,5 +49,27 @@ public class ReadingListController {
     @RequestMapping("/bbb")
     public String bbb(){
         return "reader.html";
+    }
+
+    @RequestMapping("/test-aspect1")
+    @ResponseBody
+    @WzcgLog(opsValue = "test1", remarkField = "test2")
+    public String ccc(
+            @RequestParam("id1") String id1,
+            @RequestParam("id2") String id2,
+            @RequestParam("id3") String id3
+    ){
+        return "reader";
+    }
+
+    @RequestMapping("/test-aspect2")
+    @ResponseBody
+    @LogCollection
+    public String ddd(
+            @RequestParam("id1") String id1,
+            @RequestParam("id2") String id2,
+            @RequestParam("id3") String id3
+    ){
+        return "test_ddd";
     }
 }

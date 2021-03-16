@@ -14,9 +14,9 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-//    @RequestMapping(value = {"","/index"})
-//    public String index(Model model){
-//        model.addAttribute("msg","谢谢阅读");
-//        return "index";
-//    }
+    @RequestMapping(value = {"","/index"})
+    public String index(Model model){
+        model.addAttribute("msg","谢谢阅读");
+        return "index";
+    }
 }
